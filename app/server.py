@@ -9,10 +9,10 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://www.dropbox.com/s/tjwfhwfotnmbdp3/export4.pkl?dl=1'
-export_file_name = 'export4.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1MRouEymz9re2rhwt7jKok2_cW0uEQ29u'
+export_file_name = 'export5.pkl'
 
-classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'ficus', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'laburnum', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
+classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'laburnum', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
 path = Path(__file__).parent
 
 app = Starlette()
