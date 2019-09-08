@@ -9,8 +9,8 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1MRouEymz9re2rhwt7jKok2_cW0uEQ29u'
-export_file_name = 'export5.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1dd56DxY6LVqIDBzwgXLIdCApr9CH6CuI'
+export_file_name = 'export6.pkl'
 
 classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'laburnum', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
 path = Path(__file__).parent
