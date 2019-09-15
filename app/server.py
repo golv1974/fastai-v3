@@ -77,8 +77,11 @@ async def analyze(request):
     ax.set_xticks([])
     ax.set_yticks([])
     plt.savefig("img2.jpg")
-    img2 = open_image(BytesIO("img2.jpg"))
-    prediction = learn.predict(img2)[0]
+    plt.close(fig)
+    camera = io.imread("img2.jpg")
+    im = Image.fromarray(camera)
+    #img2 = open_image(BytesIO("img2.jpg"))
+    prediction = learn.predict(im)[0]
     return JSONResponse({'result': str(prediction)})
 
 
