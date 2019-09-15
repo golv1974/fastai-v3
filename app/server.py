@@ -67,9 +67,9 @@ async def homepage(request):
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
-    print type(img_bytes)
+    type(img_bytes)
     img = open_image(BytesIO(img_bytes))
-    print type(img)
+    type(img)
     #result_image = Image.fromarray((img * 255).astype(np.uint8))
     #result_image.save(img_dir, 'PNG')
     img2= plt.imread(img)
