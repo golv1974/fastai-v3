@@ -68,7 +68,7 @@ async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    result_image = Image.fromarray(img)
+    result_image = Image.fromarray(img.values)
     #result_image.save(img_dir, 'PNG')
     img2= plt.imread(result_image)
     lina_gray = color.rgb2gray(img2)
