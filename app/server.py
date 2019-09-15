@@ -67,8 +67,8 @@ async def homepage(request):
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    lina_gray = color.rgb2gray(img)
+    #img = open_image(BytesIO(img_bytes))
+    lina_gray = color.rgb2gray(img_bytes)
     contours = measure.find_contours(lina_gray, 0.5)
     fig, ax = plt.subplots()
     for n, contour in enumerate(contours):
@@ -78,10 +78,10 @@ async def analyze(request):
     ax.set_yticks([])
     plt.savefig("img2.jpg")
     plt.close(fig)
-    camera = io.imread("img2.jpg")
-    im = Image.fromarray(camera)
-    im.save("tmp.jpg")
-    img3 = open_image(BytesIO("tmp.jpg"))
+    #camera = io.imread("img2.jpg")
+    #im = Image.fromarray(camera)
+    #im.save("tmp.jpg")
+    img3 = open_image(BytesIO("img2.jpg"))
     prediction = learn.predict(img3)[0]
     return JSONResponse({'result': str(prediction)})
 
