@@ -82,11 +82,12 @@ async def analyze(request):
     ax.set_yticks([])
     plt.savefig("img3.jpg")
     plt.close(fig)
+    img3 = "img3.jpg"
     #camera = io.imread("img2.jpg")
     #im = Image.fromarray(camera)
     #im.save("tmp.jpg")
-    img4 = open_image(BytesIO("img3.jpg"))
-    prediction = learn.predict(img4)[0]
+    #img4 = open_image(BytesIO("img3.jpg"))
+    prediction = learn.predict(img3)[0]
     return JSONResponse({'result': str(prediction)})
 
 
