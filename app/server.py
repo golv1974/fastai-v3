@@ -8,6 +8,11 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
+import matplotlib.pyplot as plt
+from skimage import io, color
+from skimage import measure # to find shape contour
+from skimage.io import imsave
+import numpy as np
 
 export_file_url = 'https://drive.google.com/uc?export=download&id=1dd56DxY6LVqIDBzwgXLIdCApr9CH6CuI'
 export_file_name = 'export6.pkl'
@@ -60,7 +65,17 @@ async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)[0]
+    lina_gray = color.rgb2gray(img)
+    contours = measure.find_contours(lina_gray, 0.5)
+    fig, ax = plt.subplots()
+    for n, contour in enumerate(contours):
+        ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
+    ax.axis('image')
+    ax.set_xticks([])
+    ax.set_yticks([])
+    plt.savefig(file + ext)
+    img2 = open_image(BytesIO(img))
+    prediction = learn.predict(img2)[0]
     return JSONResponse({'result': str(prediction)})
 
 
