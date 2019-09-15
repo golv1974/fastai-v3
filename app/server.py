@@ -71,7 +71,7 @@ async def analyze(request):
     #result_image = Image.fromarray(c_array)
     #result_image.save(img_dir, 'PNG')
     im1 = img.save("geeks.jpg")
-    img2= plt.imread(im1)
+    img2= plt.imread("geeks.jpg")
     lina_gray = color.rgb2gray(img2)
     contours = measure.find_contours(lina_gray, 0.5)
     fig, ax = plt.subplots()
