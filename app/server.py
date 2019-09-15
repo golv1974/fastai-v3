@@ -85,9 +85,10 @@ async def analyze(request):
     camera = io.imread("img3.jpg")
     im = Image.fromarray(camera)
     #im.save("tmp.jpg")
+    img4 = open_image(BytesIO("img3.jpg"))
     #img4 = open_image(BytesIO("img3.jpg"))
     #img = open_image(BytesIO(im))
-    prediction = learn.predict(im)[0]
+    prediction = learn.predict(img4)[0]
     return JSONResponse({'result': str(prediction)})
 
 
