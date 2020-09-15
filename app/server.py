@@ -12,6 +12,7 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import matplotlib.pyplot as plt
 import skimage
+from skimage.filter import canny
 from skimage import io, color
 from skimage import measure # to find shape contour
 from skimage.io import imsave
