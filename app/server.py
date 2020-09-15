@@ -17,10 +17,10 @@ from skimage import measure # to find shape contour
 from skimage.io import imsave
 import numpy as np
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1dd56DxY6LVqIDBzwgXLIdCApr9CH6CuI'
-export_file_name = 'export6.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1VcrnfXqHW9ieB_D2vXToP_pDHxYPWU40'
+export_file_name = 'export7.pkl'
 
-classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'laburnum', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
+classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
 path = Path(__file__).parent
 
 app = Starlette()
@@ -73,7 +73,7 @@ async def analyze(request):
     im1 = img.save("geeks.jpg")
     img2= plt.imread("geeks.jpg")
     lina_gray = color.rgb2gray(img2)
-    contours = measure.find_contours(lina_gray, 0.5)
+    contours = canny(lina_gray, sigma=1)
     fig, ax = plt.subplots()
     for n, contour in enumerate(contours):
         ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
