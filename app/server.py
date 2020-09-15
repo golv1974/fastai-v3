@@ -13,6 +13,7 @@ from starlette.staticfiles import StaticFiles
 import matplotlib.pyplot as plt
 import skimage
 from skimage import feature
+#from skimage.filter import canny
 from skimage import io, color
 from skimage import measure # to find shape contour
 from skimage.io import imsave
@@ -74,7 +75,7 @@ async def analyze(request):
     im1 = img.save("geeks.jpg")
     img2= plt.imread("geeks.jpg")
     lina_gray = color.rgb2gray(img2)
-    contours = canny(lina_gray, sigma=1)
+    contours = feature.canny(lina_gray, sigma=1)
     fig, ax = plt.subplots()
     for n, contour in enumerate(contours):
         ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
