@@ -78,6 +78,7 @@ async def analyze(request):
     edges = feature.canny(lina_gray, sigma=1)
     plt.imshow(edges, cmap='gray')
     plt.savefig("img3.jpg")
+    plt.close()
     with open("img3.jpg", "rb") as image:
         f = image.read()
         b = bytearray(f)
