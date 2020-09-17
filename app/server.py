@@ -75,13 +75,8 @@ async def analyze(request):
     im1 = img.save("geeks.jpg")
     img2= plt.imread("geeks.jpg")
     lina_gray = color.rgb2gray(img2)
-    contours = feature.canny(lina_gray, sigma=1)
-    fig, ax = plt.subplots()
-    for n, contour in enumerate(contours):
-        ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
-    ax.axis('image')
-    ax.set_xticks([])
-    ax.set_yticks([])
+    edges = feature.canny(lina_gray, sigma=1)
+    plt.imshow(edges, cmap='gray')
     plt.savefig("img3.jpg")
     with open("img3.jpg", "rb") as image:
         f = image.read()
