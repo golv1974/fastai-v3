@@ -81,7 +81,6 @@ async def analyze(request):
     with open("img3.jpg", "rb") as image:
         f = image.read()
         b = bytearray(f)
-    plt.close(fig)
     camera = io.imread("img3.jpg")
     im = Image.fromarray(camera)
     #im.save("tmp.jpg")
