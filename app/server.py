@@ -19,8 +19,8 @@ from skimage import measure # to find shape contour
 from skimage.io import imsave
 import numpy as np
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1VcrnfXqHW9ieB_D2vXToP_pDHxYPWU40'
-export_file_name = 'export7.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=18xe1te-kckUs8HJnUwYN-ND39Du3_lz4'
+export_file_name = 'export8.pkl'
 
 classes = ['crataegus', 'juglans', 'ailanthus', 'salix', 'aesculus', 'morus', 'ilex', 'populus', 'betula', 'pyrus', 'robinia', 'ulmus', 'carpinus', 'alnus', 'prunus', 'quercus', 'fraxinus', 'acer', 'frangula', 'tilia', 'corylus', 'ginkgo', 'gleditsia', 'fagus', 'elaeagnus', 'malus', 'catalpa', 'sorbus', 'platanus']
 path = Path(__file__).parent
@@ -72,23 +72,23 @@ async def analyze(request):
     img = open_image(BytesIO(img_bytes))
     #result_image = Image.fromarray(c_array)
     #result_image.save(img_dir, 'PNG')
-    im1 = img.save("geeks.jpg")
-    img2= plt.imread("geeks.jpg")
-    lina_gray = color.rgb2gray(img2)
-    edges = feature.canny(lina_gray, sigma=1)
-    plt.imshow(edges, cmap='gray')
-    plt.savefig("img3.jpg")
-    plt.close()
-    with open("img3.jpg", "rb") as image:
-        f = image.read()
-        b = bytearray(f)
-    camera = io.imread("img3.jpg")
-    im = Image.fromarray(camera)
+    #im1 = img.save("geeks.jpg")
+    #img2= plt.imread("geeks.jpg")
+    #lina_gray = color.rgb2gray(img2)
+    #edges = feature.canny(lina_gray, sigma=1)
+    #plt.imshow(edges, cmap='gray')
+    #plt.savefig("img3.jpg")
+    #plt.close()
+    #with open("img3.jpg", "rb") as image:
+        #f = image.read()
+        #b = bytearray(f)
+    #camera = io.imread("img3.jpg")
+    #im = Image.fromarray(camera)
     #im.save("tmp.jpg")
-    img5 = open_image(BytesIO(b))
+    #img5 = open_image(BytesIO(b))
     #img4 = open_image(BytesIO("img3.jpg"))
     #img = open_image(BytesIO(im))
-    prediction = learn.predict(img5)[0]
+    prediction = learn.predict(img)[0]
     return JSONResponse({'result': str(prediction)})
 
 
