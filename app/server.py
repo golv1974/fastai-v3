@@ -88,8 +88,15 @@ async def analyze(request):
     #img5 = open_image(BytesIO(b))
     #img4 = open_image(BytesIO("img3.jpg"))
     #img = open_image(BytesIO(im))
-    prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str(prediction)})
+    prediction1 = learn.predict(img)[0]
+    img_data = await request.form()
+    img_bytes = await (img_data['file'].read())
+    img = open_image(BytesIO(img_bytes))
+    prediction2 = learn.predict(img)[0]
+    if prediction1 == prediction2:
+        return JSONResponse({'result': str(prediction2)})
+    else:
+        return JSONResponse({'result': str('need more foto')})
 
 
 if __name__ == '__main__':
