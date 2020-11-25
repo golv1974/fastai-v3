@@ -88,8 +88,24 @@ async def analyze(request):
     #img5 = open_image(BytesIO(b))
     #img4 = open_image(BytesIO("img3.jpg"))
     #img = open_image(BytesIO(im))
-    prediction = learn.predict(img)[0:3]
-    return JSONResponse({'result': str(prediction)})
+    #prediction = learn.predict(img)[0]
+    preds,tensor,probs=learn.predict(img)
+    classes=learn.data.classes
+    def top_5_preds(preds):    
+        preds_s = preds.argsort(descending=True)
+        preds_s=preds_s[:5]    
+        return preds_s
+    def top_5_pred_labels(preds, classes):
+        top_5 = top_5_preds(preds)
+        labels = []
+        confidence=[]
+        for i in top_5:
+            x=classes[i]
+            p=preds[i]
+            labels.append(x)
+            confidence.append(p)
+    top_5_predictions,top_5_confidence=top_5_pred_labels(probs,classes)
+    return JSONResponse({'result': str(top_5_predictions)})
 
 
 if __name__ == '__main__':
