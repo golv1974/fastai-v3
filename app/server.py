@@ -104,8 +104,8 @@ async def analyze(request):
             p=preds[i]
             labels.append(x)
             confidence.append(p)
-    top_5_predictions,top_5_confidence=top_5_pred_labels(probs,classes)
-    return JSONResponse({'result': str(top_5_pred_labels)})
+    top_5_predictions = top_5_pred_labels(probs,classes)
+    return JSONResponse({'result': str(top_5_predictions)})
 
 
 if __name__ == '__main__':
